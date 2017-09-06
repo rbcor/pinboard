@@ -1,0 +1,20 @@
+{% extends 'pinboard/base.html' %}
+
+{% block content %}
+<div class="clearfix">
+    <div style="margin-right: 20%; margin-left: 20%;font-family:'BenSenHandwriting' ">
+        {{ pin.text|linebreaks }}<hr /><br />
+
+        লেখা হয়েছে : {{ pin.created_at }}<br />
+        আপডেট হয়েছে : {{ pin.updated_at }}<br />
+    {% if pin.tag.all %}
+       <p> ট্যাগ
+        :{% for tag in pin.tag.all %} {{ tag }}{% if not forloop.last %}, {% endif %}{% endfor %}
+       </p>
+    {% endif %}
+    <br /><a href="{% url 'index' %}" class="link">হোম</a>
+    </div>
+</div>
+
+
+{% endblock %}

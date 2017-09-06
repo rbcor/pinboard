@@ -1,0 +1,20 @@
+{% extends 'pinboard/base.html' %}
+
+{% block content %}
+
+    {% for pin in pin_list %}
+        <p class="note-wrap" style=" font-family:{{ pin.style_font }};
+                                     background: {{ pin.style_color }};
+                                    -webkit-transform: rotate({{ pin.style_transform_range }}deg);
+                                    -moz-transform: rotate({{ pin.style_transform_range }}deg);
+                                    -o-transform: rotate({{ pin.style_transform_range }}deg);
+                                    -ms-transform: rotate({{ pin.style_transform_range }}deg);
+                                    transform: rotate({{ pin.style_transform_range }}deg); ">
+
+            {{ pin.text|truncatewords:20 }}<br>
+            <a href="{% url 'detail' pin.id %}">বিস্তারিত</a>
+
+        </p>
+    {% endfor %}
+
+{% endblock %}
